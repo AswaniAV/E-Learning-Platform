@@ -1,0 +1,423 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>CourseProject</title>
+  </head>
+  <body style="font-size: smaller;">
+<section class="" style="background-image: url('{% static 'images/bg2.jpg' %}'); background-repeat: no-repeat; background-size: cover; height:auto;">
+    <!-- navbar -->
+    <div class="">
+      <nav class="navbar navbar-expand-lg mt-0"  id="navbar">
+        <div class="container-fluid">
+          <div class="px-3 ">
+            <a class="navbar-brand text-white" href="{% url 'home' %}">E-Learning Platform</a>
+          </div>
+          <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mt-3" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" href="{% url 'allcourse' %}">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" href="{% url 'store' %}">Store</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white p-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: x-small;">
+                  {%for category in links %}
+                  <li><a class="dropdown-item" href="{% url 'product_name' category_slug=category.slug %}">{{category.category_name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" href="{% url 'about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" href="{% url 'contact' %}">Contact</a>
+              </li>
+              {% if user.is_authenticated  %}
+              <li class="nav-item ">
+                <a class="nav-link  m-2 text-warning"  href="{% url 'myprofile' %}">My profile</a>
+              </li>
+              <li class="nav-item ">
+                <p class="text-white p-3">hi, {{user.username}}</p>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white m-2 border border-1"  href="{% url 'logout' %}">logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link text-white p-3" href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+            <ul class="navbar-nav ">
+              <li class="nav-item ms-end">
+                <a href="{% url 'cart' %}" class="btn btn-sm text-white btn-warning  px-4">Cart</a>   
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    </div>
+     
+    <!-- navbar -->
+ 
+    <div class="m-5">
+       <div class="row justify-content-md-center">
+         <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-start text-white">
+         <p class="mt-5"><a href="" style="font-size: small; color: white; text-decoration: none;">ON-DEMAND VIDEO TRAINING</a></p>
+           <h1 class="display-5 fw-bold my-4">Education Opens up the Mind</h1>
+           <p class=" my-3">Whether you’re looking to support and train researchers in your field, increase collaboration within your organization, or give back to the world’s most widely read knowledge resource, 
+            E-learn platform Education can customize our curriculum to meet your needs.</p>
+           <div class="d-grid gap-2 d-sm-flex justify-content-sm-start my-5 ">
+             <button type="submit" class="btn bsb-btn-3xl btn-warning gap-3 rounded-pill px-3 text-white btn-sm"><a href="{%url 'allcourse' %}" class="text-decoration-none text-white">START COURSE</a> </button>
+
+           </div>
+         </div>
+         <div class="col-lg">
+         </div>
+       </div>
+     </div>
+ </section>
+ 
+    {% block content %}
+
+    <!-- availale subjects -->
+    <div class=" container my-5 text-center">
+      <h4 class="">Available Subjects</h4>
+       <p class="my-2">Browse suscribed & Subjests and course contents </p>
+
+       <div class="card1 m-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4"> <!-- Added responsive row-cols -->
+          {% for course in purchased_courses %}
+          <div class="col"> <!-- Use col for responsive column -->
+            <div class="card mx-1 shadow" style="height: 420px;">
+              <img src="{{course.course_img.url}}" class="card-img-top" alt="" width="100" height="180"/>
+              <div class="card-body">
+                <h6 class="card-title ">{{course.course_name}}</h6>
+                <p>{{course.desc}}</p>
+                <a href="{% url 'course_tutorial' course_id=course.id%}" class="btn btn-primary btn-sm">View classes</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- availale subjects -->
+
+    <!-- technologies learn -->
+    <div class="container my-5">
+      <div class="row ">
+        <div class="col-md-5 mt-3 text-end">
+          <h3 class=" fw-medium ">Technologies You Will Learn</h3>
+        </div>
+  
+        <div class="col-md-7 text-start my-2">
+         <img src="{% static 'images/html.png'%}" alt="html" width="50" height="50" class="opacity-25 mx-2">
+         <img src="{% static 'images/css.png'%}" alt="html" width="40" height="40" class="opacity-25 mx-2">
+         <img src="{% static 'images/javascript.png'%}" alt="html" width="40" height="40" class="opacity-25 mx-2">
+         <img src="{% static 'images/nodejs.png'%}" alt="html" width="50" height="50" class="opacity-25 mx-2">
+         <img src="{% static 'images/vuejs.png'%}" alt="html" width="40" height="40" class="opacity-25 mx-2">
+         <img src="{% static 'images/react.png'%}" alt="html" width="40" height="40" class="opacity-25 mx-2">
+         <img src="{% static 'images/python.png'%}" alt="html" width="40" height="40" class="opacity-25 mx-2">
+         <img src="{% static 'images/angular.png'%}" alt="html" width="50" height="50" class="opacity-25 mx-2">
+        </div>
+      </div>
+    </div>
+
+     <!-- technologies learn -->
+
+     <!-- Course categories -->
+     <div class="container">
+      <h5 class="text-center my-4">Course Categories</h5>
+      <div class="row row-cols-1 row-cols-md-2 m-2">
+        {% for category in categories %}
+        <div class="col mb-3"> <!-- Add margin-bottom for spacing -->
+          <div class="card shadow h-100" > <!-- Fixed card height -->
+            {% if category.category_img %}
+              <img src="{{ category.category_img.url }}" 
+                   class="card-img-top" 
+                   alt="{{ category.category_name }}" 
+                   style="height: 150px; object-fit: cover;" /> <!-- Image height -->
+            {% else %}
+              <img src="{% static 'images/default.jpg' %}" 
+                   class="card-img-top" 
+                   alt="Default Image" 
+                   style="height: 150px; object-fit: cover;" />
+            {% endif %}
+            <div class="card-body d-flex flex-column justify-content-between"> <!-- Flexbox for vertical alignment -->
+              <div>
+                <h6 class="card-title">{{ category.category_name }}</h6>
+                <p>{{ category.desc }}</p> <!-- Ensure the description doesn't overflow -->
+              </div>
+              <a href="{% url 'product_name' category_slug=category.slug %}" class="btn btn-primary btn-sm mt-auto w-75">Enroll in {{ category.category_name }}</a> <!-- Button at bottom -->
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+  
+     <!-- Course categories -->
+
+     <!-- Courses -->
+
+     
+     <!-- Courses -->
+
+     <!-- experience,education,certificate -->
+
+     <div class="mt-5 pt-5 ">
+       <div class="row mx-5 ">
+           <div class="col-md text-dark py-3 shadow-sm">
+             <h5>Experience</h5>
+             <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
+              luctus nec ullam corper mattis, pulvinar dapibus.</p>
+           </div>
+           <div class="col-md text-dark py-3 shadow"><h5>Education</h5>
+            <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
+             luctus nec ullam corper mattis, pulvinar dapibus.</p></div>
+           <div class="col-md text-dark py-3 shadow-sm">
+            <h5>Certificate</h5>
+             <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
+              luctus nec ullam corper mattis, pulvinar dapibus.</p>
+           </div>
+           <div class="col-md border-0 bg-light mx-4 mb-0 p-3 shadow">
+            <p>Study at Your Own Pace</p>
+            <h6 class="mb-4">Boost Your Career by Learning Skills in High Demand</h6>
+            <a href="#" class="text-decoration-none fw-bold  text-dark ">GET STARTED</a>
+           </div>
+       </div>
+     </div>
+
+     <!-- experience,education,certificate -->
+
+     <!-- features of course -->
+     <div class="m-5">
+       <div class="row ">
+        <div class="col-lg-6 text-start mt-5">
+          
+          <p class="fw-bold">Features of Our Courses</p>
+          <h4 class=" fw-medium mb-4">Why Choose Us?</h4>
+          <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        </div>
+        <div class="col-lg-6 mt-5">
+         <div class="row mb-2">
+           <div class="col-1">
+            <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
+           </div>
+           <div class="col-10 ms-2">
+             <h6 class="fw-bold">Best Industry Leaders</h6>
+             <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+             Ut elit tellus, luctus nec ullamcorper.</p>
+           </div>
+         </div>
+          
+         <div class="row mb-2">
+          <div class="col-1">
+           <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
+          </div>
+          <div class="col-10 ms-2">
+            <h6 class="fw-bold">Learn Online at Your Own Pace</h6>
+            <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Ut elit tellus, luctus nec ullamcorper.</p>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-1">
+           <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
+          </div>
+          <div class="col-10 ms-2">
+            <h6 class="fw-bold">Professional Certification</h6>
+            <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Ut elit tellus, luctus nec ullamcorper.</p>
+          </div>
+        </div>
+       </div>
+
+       </div>   
+     </div>
+     <!-- features of course -->
+      
+     <!-- testmonials -->
+
+    <div class="m-5">
+
+      <div class="container mt-5">
+        <div class="row">
+          <!-- Feature Title -->
+          <div class="col-12">
+            <p class="fw-bold">Features of Our Courses</p>
+          </div>
+      
+          <!-- Left Column (Title) -->
+          <div class="col-md-7">
+            <h4 class="fw-medium">Trusted by Thousands of Students and Tutors</h4>
+          </div>
+      
+          <!-- Right Column (Button) -->
+          <div class="col-md-5 text-md-end text-center">
+            <!-- Aligning to the end on larger screens and centered on smaller screens -->
+            <a href="{% url 'allcourse'%}" class="btn btn-warning rounded-2 px-4 py-1  fw-semibold btn-sm text-white">START LEARNING</a>
+          </div>
+        </div>
+      </div>
+      
+
+        <div class="row row-cols-1 row-cols-md-2 g-4 my-5">
+          <div class="col mt-5">
+            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+              <div  class="position-absolute top-0 start-0 translate-middle-y">
+                <img src="{% static 'images/face-01.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              </div>
+              <div class="card-body mt-5">
+                <p class="card-text ">“Massa amet, at dolor tellus pellentesque aenean in eget massa tincidunt habitasse volutpat 
+                  adipiscing sed id sit auctor eu vivamus nulla.”</p>
+                <p class="fw-bold">Emma Hart</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col mt-5">
+            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+              <div  class="position-absolute top-0 start-0 translate-middle-y">
+                <img src="{% static 'images/face-02.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              </div>
+              
+              <div class="card-body mt-5">
+                <p class="card-text">“Donec in varius facilisis justo, curabitur aliquet sit justo sed sit 
+                  interdum diam dolor ornare quis a felis adipiscing hendrerit quisque enim.”</p>
+                <p class="fw-bold">Eddie Johnson</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col mt-5">
+            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+              <div  class="position-absolute top-0 start-0 translate-middle-y">
+                <img src="{% static 'images/face-03.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              </div>
+              <div class="card-body mt-5">
+                <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, 
+                  a, pulvinar gravida enim in blandit
+                   mauris vitae volutpat urna, sed justo hendrerit.”</p>
+                <p class="fw-bold">MIKE EDWARD</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col mt-5">
+            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+              <div  class="position-absolute top-0 start-0 translate-middle-y">
+                <img src="{% static 'images/face-04.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              </div>
+              <div class="card-body mt-5">
+                <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, a,
+                  pulvinar gravida enim in blandit mauris vitae volutpat urna, sed justo hendrerit.”</p>
+                <p class="fw-bold">MIKE EDWARD</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+     <!-- testmonials -->
+
+     <!-- subscribe -->
+<div class="my-5 text-center">
+  <h2 class="display-6 fw-bolder">Join Our Community</h2>
+  <p class="my-4">Enter your email address to register to our newsletter subscription delivered on regular basis!</p>
+<div class="mx-5 text-center">
+  <form>
+        <input type="email"  id="email" placeholder="Enter Your Email" class="w-50 h-auto"><br>
+        <button type="submit" class="btn btn-warning my-3 rounded-5 px-5 btn-sm text-white">SUBSCRIBE</button>
+    </form>
+</div>
+  
+</div>
+<!-- subscribe -->
+
+     <!-- footer-->
+     <footer class="text-start  bg-body-tertiary text-muted">
+      <!-- Section: Links  -->
+      <section class="pt-3">
+        <div class=" text-center text-md-start m-5">
+          <!-- Grid row -->
+          <div class="row mt-3 ">
+            <!-- Grid column -->
+            <div class="col-md-5  mx-auto mb-4">
+              <!-- Content -->
+              <h5 class="text-uppercase fw-bold mb-4">
+              CourseProject
+              </h5>
+              <p>
+                Whether you’re looking to support and train researchers in your field, increase collaboration within your organization,
+                 or give back to the world’s most widely read knowledge resource,
+                 E-learn platform Education can customize our curriculum to meet your needs <a href="#" class="text-decoration-none">.....</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto mb-4 ">
+              <h6 class="text-uppercase fw-bold mb-4 ms-3">Popular Categories</h6>
+              {%for category in links %}
+               <a class="dropdown-item " href="{% url 'product_name' category_slug=category.slug %}">{{category.category_name}}</a>
+              {% endfor %}
+            </div>
+            <!-- Grid column -->
+    
+    
+            <!-- Grid column -->
+            <div class="col-md-4  mx-auto mb-md-0 mb-4 text-start">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Contact Info</h6>
+              <span class="fw-bold">Address</span>
+              <p> 123 Fifth Avenue, New York, NY 10160</p>
+              <span class="fw-bold">Phone</span>
+              <p>929-242-6868</p>
+              <span class="fw-bold">Email Address</span>
+              <p> contact@info.com</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="#">Courseproject.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+      <!-- Footer -->
+
+    {% endblock %} 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- checkout.html -->
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5 py-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Checkout</h2>
+            <form method="post">
+                {% csrf_token %}
+                <!-- Add form fields for payment details -->
+                <div class="form-group mb-3">
+                    <label for="card_number">Card Number</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number" placeholder="Enter card number" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="expiry_date">Expiry Date</label>
+                    <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Complete Payment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

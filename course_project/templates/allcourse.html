@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+      <!-- popular course -->
+      <div class="my-5 ">
+        <div class="row mx-5 text-start">
+            <div class="col-sm-4">
+                 <h1 class="display-6 fw-bold">Popular Courses</h1>
+            </div>
+
+            <div class="col-sm-7 mx-4 pt-3 border-start border-warning border-2">
+                <p class="px-2">Learn Information Technology or improve your skills online today. 
+                  Choose from a wide range of Information Technology courses offered from top universities ...</p>
+            </div>
+
+        </div>
+     </div>
+     <!-- popular course -->
+          <!-- cards -->
+          <div class="card1 m-5 ">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              {% for courses in course %}
+              <div class="col mb-4">
+                <div class="card h-100 shadow">
+                  <img src="{{ courses.course_img.url }}" class="card-img-top" alt="{{ courses.course_name }}" width="100" height="180">
+                  <div class="card-body">
+                    <h6 class="card-title">{{ courses.course_name }}</h6>
+                    <p>{{ courses.desc }}</p>
+                    <p>Price: {{ courses.price }}</p>
+                    <a href="{% url 'course_details' category_slug=courses.category.slug course_slug=courses.slug %}" class="btn btn-primary btn-sm">Enroll Now</a>
+                    <!-- Optional: Uncomment the following line if you want to include a "Tutorial" button -->
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          
+         <!-- cards -->
+{% endblock %}

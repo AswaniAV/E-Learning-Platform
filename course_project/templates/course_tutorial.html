@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section id="tutorials" class="tutorials py-5">
+  <div class="container ">
+    <div class="heading mb-4">
+      <h5 class="text-center">{{course.course_name}}</h5>
+      <p>Total modules:{{ total_modules }}</p>
+    </div>  
+    <div class="row row-cols-md-1 row-cols-md-5">
+      {% for tutorial in tutorials %}
+       <div class="col-md-3 mb-4">
+           <div class="card shadow mb-4  h-100"> 
+            {% if tutorial.thumbnail %}
+            <img src="{{tutorial.thumbnail.url}}" alt="{{tutorial.title}}" class="card-img-top ">
+            {% endif %}             
+               <div class="card-body text-center">
+               
+                 <h6 class="card-title">{{tutorial.title}}</h6>
+                 <p class="card-text">{{tutorial.desc}}</p>
+                 <a href="{% url 'tutorial_details' tutorial_id=tutorial.id %}" class="btn btn-primary btn-sm">Watch More</a>
+                </div>
+             </div>
+       </div>
+       {% endfor %}
+    </div>
+   </div>
+</section>
+{% endblock %}

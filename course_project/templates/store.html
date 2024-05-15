@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-2"> <!-- Main row for the first column -->
+        <div class="col-md-8">
+            <!-- Nested row for two columns of cards -->
+            <div class="row row-cols-1 row-cols-md-2"> 
+                {% for course in courses %}
+                <div class="col"> <!-- Column for each card -->
+                    <div class="card mb-4 shadow" style="height: 450px;">
+                        <img src="{{ course.course_img.url }}" class="card-img-top" alt="{{ course.course_name }}" height="180" style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h6 class="card-title">{{ course.course_name }}</h6>
+                            <p>{{ course.desc }}</p>
+                            <p>Price: {{ course.price }}</p>
+                            <!-- Pass required arguments for 'course_details' URL -->
+                            <a href="{% url 'course_details' category_slug=course.category.slug course_slug=course.slug %}" class="btn btn-primary btn-sm">Enroll to {{ course.course_name }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-4 ms-0"> <!-- Second main column for categories -->
+            <ul class="list-group">
+                {% for category in categories %}
+                <li class="list-group-item bg-black mb-2 rounded-2"><a href="{% url 'product_name' category_slug=category.slug %}" class="text-decoration-none text-white-50">{{ category.category_name }}</a></li> <!-- List group for categories -->
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div> 
+ 
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container m-5">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        
+        <div class="col-md-6">
+            <img src="{{ course.course_img.url }}" class="card-img-top" alt="{{ course.course_name }}" height="auto" style="object-fit: cover;" /> 
+        </div>
+       
+        <div class="col-md-6">
+            <h4>{{ course.course_name }}</h4>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p>Price: {{ course.price }}</p>
+                    <p>{{ course.desc }}</p>   
+                    <a href="{% url 'add_to_cart' category_slug=course.category.slug course_slug=course.slug %}" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

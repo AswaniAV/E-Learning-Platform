@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content%}
+<div class="container my-5">
+    <div class="row justify-content-center g-4">
+        <div class="col-md-4 text-center">
+            
+            <div class="card shadow-lg d-flex justify-content-center align-items-center">
+                <img src="{% static 'images/face.png' %}" alt="facepic" class="w-25 h-25  mt-5">
+              
+                <p class="my-4">{{user.username}}</p>
+                <p class="my-2">{{user.email}}</p>
+                {% for purchased_course in purchased_courses %}
+                  <h6 class="my-4">{{ purchased_course.course_name }}</h6>
+                {% endfor %}   
+                <div class="text-center my-4">
+                 <button type="submit" class="btn btn-primary d-inline-block">Follow</button>
+                 <button type="submit" class="btn btn-primary d-inline-block">Message</button>
+              </div>  
+              </div>
+            </div>          
+  
+      <div class="col-md-7 ">
+          <div class="card shadow-lg">
+            <div class="my-4">
+              <h5 class="m-2">Full Name</h5>
+              <p class="ms-2">{{user.username}}</p>
+              <h5 class="m-2">Email</h5>
+              <p class="ms-2">{{user.email}}</p>
+              <h5 class="m-2">Phone</h5>
+              <p class="ms-2">+91 9984784523</p>
+            </div>      
+          </div>
+
+          <div class="row">
+            <div class="col-sm mt-2">
+                <div class="card shadow-lg">
+                    <h4 class="ms-2 my-4">Account Status</h4>
+                    <p class="ms-2">Active</p>
+                </div>
+            </div>
+
+            <div class="col-sm mt-2">
+              <div class="card shadow-lg">
+                  {% for purchased_course in purchased_courses %}
+                   <div class="my-2">
+                    <h6 class="ms-2 my-3">{{ purchased_course.course_name }}</h6>
+                    <p class="ms-2">Payment status: unpaid</p>
+                   </div>  
+                  {% endfor %}
+              </div>
+            </div>            
+          </div>
+      </div>    
+    </div>
+  </div>
+  
+{% endblock%}

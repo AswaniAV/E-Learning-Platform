@@ -1,0 +1,47 @@
+ {% extends "base.html" %}
+ {% load static %}
+ {% block content %}
+<div class="m-5">
+    <section class="">
+        <div class="container ">
+          <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-md-6">
+              <div class="card  text-dark shadow-lg" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+      
+                  <div class="mb-md-5 mt-md-4 ">
+      
+                    <h3 class="fw-bold mb-2 text-uppercase">Login</h3>
+                    <p class="text-dark mb-5">Please enter your login and password!</p>
+      
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div  class=" form-white mb-4">
+                            <input type="text" id="username" class="form-control" name="username"/>
+                            <label for="username">Username</label>
+                          </div>
+            
+                          <div  class=" form-white mb-4">
+                            <input type="password" id="password" class="form-control" name="password"/>
+                             <label for="password">Password</label>
+                          </div>
+                           
+                          {% for message in messages %}
+                           <div class="text-center">
+                           <h5>{{message}} </h5>    
+                           </div>
+                          {% endfor %}
+                          <button class="btn btn-primary btn-sm mt-3 px-5" type="submit" value="submit">Login</button>
+                        <div>
+                          <p class="mt-5">Don't have an account? <a href="{% url 'register' %}" class="text-dark fw-bold">Sign Up</a>
+                          </p>    
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+</div>
+ {% endblock %}
