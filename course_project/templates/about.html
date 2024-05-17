@@ -2,102 +2,89 @@
 {% load static %}
 {% block content %}
 <!-- About -->
-<div class="my-5 ">
-  <div class="row mx-5 text-start ">
-      <div class="col-sm-4">
-           <h1 class="display-6 fw-bold">What We're All About</h1>
-      </div>
-
-      <div class="col-sm-7 mx-4 pt-3 border-start border-warning border-2">
-          <p class="px-2">Learn Information Technology or improve your skills online today. 
-            Choose from a wide range of Information Technology courses offered from top universities ...</p>
-      </div>
-
-  </div>
-</div>
-
-    <div class="my-5">
-      <div class="row mx-1 ">
-        <div class="col-md-7">
-          <img src="{% static 'images/about.jpg'%}"  alt="about" width="100%" height="auto" class="shadow">
-        </div> 
-        <div class="col-md-4 mx-3">
-          <h2 class="display-6 fw-bold my-5">Learn Something Every Day</h2>
-          <p>Learn Information Technology or improve your skills online today.
-             Choose from a wide range of Information Technology courses offered from top universities ...</p>
-          <p class="fw-bold fs-5">Bobby Harris</p>
-          <p class="fw-bold fs-6">Founder</p>
-          <img src="{% static 'images/signature.png'%}" alt="" width="100" height="80">
-        </div>
-      </div>
-   </div>
-<!-- about -->
-
-<!-- our vision -->
 <div class="my-5">
-  <div class="row mx-5 ">
-      <div class="col-md-4 text-start">
-          <p class="fw-bolder fs-5">Our Vision</p>
-          <h1 class="display-5 fw-bold">Who We Are</h1>
-      </div>
-      <div class="col-md-8 ">
-          <h3 class="fw-bold">"It is impossible for a man to learn what he thinks he already knows."</h3>
-          <p class="my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-          <div class="row ">
-              <div class="col-md mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</div>
-
-              <div class="col-md mt-2">non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                  totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae 
-                  vitae dicta sunt explicabo.
-                   Nemo enim ipsam voluptatem quia voluptas</div>
-          </div>    
-      </div>
-  </div>
-
-</div>
-<!-- our vision -->
-
-<!-- background image -->
-<div class="p-5   bg-secondary-subtle opacity-50" style="height: auto;">
-  <div class=" row text-start">
-    <div class="col-sm">
-        <div class="row">
-            <div class="col-sm-2"><img src="{% static 'images/ebook.png'%}" alt="" width="40" height="40"></div>
-            <div class="col">
-                <h4 class="text-black">Learn From Industry Leaders</h4>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
-            </div>
-        </div>
+  <div class="row mx-5 text-start">
+    <div class="col-md-4 mb-md-0">
+      <h3 class="fw-bold mt-3">What We're All About</h3>
     </div>
-
-     <div class="col-sm">
-        <div class="row">
-            <div class="col-sm-2"><img src="{% static 'images/ebook.png'%}" alt="" width="40" height="40"></div>
-            <div class="col">
-                <h4 class="text-black">Learn at Your Own Pace</h4>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
-            </div>
-        </div>
+    <div class="col-md-7 mx-md-4 pt-3 border-start border-warning border-2">
+      <p class="px-2">Learn Information Technology or improve your skills online today. 
+        Choose from a wide range of Information Technology courses offered from top universities ...</p>
     </div>
-
-     <div class="col-sm">
-        <div class="row">
-            <div class="col-sm-2"><img src="{% static 'images/ebook.png'%}" alt="" width="40" height="40"></div>
-            <div class="col">
-                <h4 class="text-black">Professional Certification</h4>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
-            </div>
-        </div>
-    </div>
-
   </div>
 </div>
 
-<!-- background image --> 
+<div class="my-5">
+  <div class="row mx-1">
+    <div class="col-md-7 mb-4 mb-md-0">
+      <img src="{% static 'images/about.jpg' %}" alt="about" class="img-fluid shadow">
+    </div> 
+    <div class="col-md-4 mx-md-3">
+      <h3 class=" fw-bold my-5">Learn Something Every Day</h3>
+      <p>Learn Information Technology or improve your skills online today.
+        Choose from a wide range of Information Technology courses offered from top universities ...</p>
+      <p class="fw-bold fs-5">Bobby Harris</p>
+      <p class="fw-bold fs-6">Founder</p>
+      <img src="{% static 'images/signature.png' %}" alt="Signature" width="100" height="80">
+    </div>
+  </div>
+</div>
 
+<!-- Our Vision -->
+<div class="my-5">
+  <div class="row mx-5 text-start">
+    <div class="col-md-4 mb-4 mb-md-0">
+      <p class="fw-bolder fs-5">Our Vision</p>
+      <h3 class=" fw-bold">Who We Are</h3>
+    </div>
+    <div class="col-md-8">
+      <h4 class="fw-bold">It is impossible for a man to learn what he thinks he already knows.</h4>
+      <p class="my-4 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+      <div class="row">
+        <div class="col-md-6 mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat</div>
+        <div class="col-md-6 mt-2">non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae 
+          vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas</div>
+      </div>    
+    </div>
+  </div>
+</div>
+
+<!-- Background Image Section -->
+<div class="p-5 ">
+  <div class="row text-start ">
+    <div class="col-lg-4 col-md-6 py-4 mb-lg-0 shadow">
+      <div class="d-flex">
+        <img src="{% static 'images/ebook.png' %}" alt="Icon" width="30" height="30" class="me-3">
+        <div>
+          <h5 class="text-black">Learn From Industry Leaders</h5> 
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 py-4 mb-lg-0 shadow">
+      <div class="d-flex">
+        <img src="{% static 'images/ebook.png' %}" alt="Icon" width="30" height="30" class="me-3">
+        <div>
+          <h5 class="text-black">Learn at Your Own Pace</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 py-4 mb-lg-0 shadow">
+      <div class="d-flex">
+        <img src="{% static 'images/ebook.png' %}" alt="Icon" width="30" height="30" class="me-3">
+        <div>
+          <h5 class="text-black">Professional Certification</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

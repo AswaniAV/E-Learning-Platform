@@ -15,6 +15,6 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Order, OrderAdmin)  # Register Order model with admin and apply custom admin options
 
 class TutorialAdmin(admin.ModelAdmin):
-    list_display = ('title','course')
+    list_display = ('title','course','video_url')
 
 admin.site.register(Tutorial, TutorialAdmin)    

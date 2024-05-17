@@ -4,7 +4,7 @@ from .models import *
 from accounts.models import *
 from category.models import Category
 from django.contrib.auth.decorators import login_required
-
+from urllib.parse import urlparse, parse_qs
 
 def allcourse(request):
     course = Course.objects.all().filter(is_available= True)
@@ -116,9 +116,21 @@ def tutorial_details(request, tutorial_id):
 
     up_next_tutorials = Tutorial.objects.filter(course=course).exclude(pk=tutorial.pk)[:8]
 
+    video_url = tutorial.video_url
+    video_id = None
+    if video_url:
+        parsed_url = urlparse(video_url)
+        if parsed_url.hostname in ['www.youtube.com', 'youtube.com']:
+            video_id = parse_qs(parsed_url.query).get('v')
+            if video_id:
+                video_id = video_id[0]
+        elif parsed_url.hostname in ['youtu.be']:
+            video_id = parsed_url.path[1:]
+
     context = {
         'tutorial': tutorial,
         'up_next_tutorials': up_next_tutorials,
+        'video_id': video_id,
     }
     return render(request, 'tutorial_details.html', context)
 

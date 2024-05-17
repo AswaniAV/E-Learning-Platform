@@ -5,10 +5,14 @@
     <div class="row row-cols-md-1 row-cols-md-2 g-4">
         <div class="col-md-6">
             <div class="card shadow">
-                <div class="embed-responsive embed-responsive-16by9 m-2 ">
-                    <iframe class="embed-responsive-item w-100 " src="https://www.youtube.com/embed/" style="height: 350px;"></iframe>
+                <div class="embed-responsive embed-responsive-16by9 m-2">
+                    {% if video_id %}
+                    <iframe class="embed-responsive-item w-100" src="https://www.youtube.com/embed/{{ video_id }}" style="height: 350px;"></iframe>
+                    {% else %}
+                    <p>Video not available</p>
+                    {% endif %}
                 </div>    
-                <a href="" class="btn btn-primary btn-sm mt-3 m-3">Watch</a>
+                <a href="{{ tutorial.video_url }}" class="btn btn-primary btn-sm mt-3 m-3" target="_blank">Watch</a>
                 <div class="p-3">
                     <h6 class="mt-2">{{tutorial.title}}</h6> 
                     <p class="mt-4">{{tutorial.desc}}</p>
@@ -29,8 +33,8 @@
                     <h6 class="mb-4">Up next tutorials</h6> 
                     <ul class="list-group">
                         {% for up_next_tutorial in up_next_tutorials %}
-                            <li class="list-group-item mb-2">
-                                <a href="{% url 'tutorial_details' tutorial_id=up_next_tutorial.id %}">{{ up_next_tutorial.title }}</a>
+                            <li class="list-group-item mb-1 shadow">
+                                <a href="{% url 'tutorial_details' tutorial_id=up_next_tutorial.id %}" class="text-decoration-none text-dark">{{ up_next_tutorial.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
