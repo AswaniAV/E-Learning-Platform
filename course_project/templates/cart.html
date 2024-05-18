@@ -16,7 +16,7 @@
                                 <div class="col-6 col-md-8 col-lg-6"> <!-- Responsive column sizes -->
                                     <p class="fw-normal mb-2">Course</p>
                                     <p><span class="text-muted">{{ course.course_name }}</span></p>
-                                    <p>Total Price: {{ course.price }}</p>
+                                    <p> Price: {{ course.price }}</p>
                                 </div>
                                 <div class="col-3 col-md-2 col-lg-2 text-center"> <!-- Ensure centered text on smaller screens -->
                                     <p class="fw-normal mb-2">Price</p>
@@ -28,7 +28,9 @@
                             </div>
                         </div>
                     </div>
+                    
                     {% endfor %}
+                    <p class="m-4">Total price : {{total_price}}</p>  
 
                     <div class="card shadow">
                         <div class="card-body text-center"> <!-- Center the checkout button -->
