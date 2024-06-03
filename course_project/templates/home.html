@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>CourseProject</title>
   </head>
-  <body style="font-size: smaller;">
+  <body>
 <section class="" style="background-image: url('{% static 'images/bg2.jpg' %}'); background-repeat: no-repeat; background-size: cover; height:auto;">
     <!-- navbar -->
     <div class="">
@@ -25,49 +25,49 @@
           <div class="collapse navbar-collapse mt-3" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link text-white p-3" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="nav-link text-white p-2" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white p-3" href="{% url 'allcourse' %}">Courses</a>
+                <a class="nav-link text-white p-2" href="{% url 'allcourse' %}">Courses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white p-3" href="{% url 'store' %}">Store</a>
+                <a class="nav-link text-white p-2" href="{% url 'store' %}">Store</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white p-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white p-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: x-small;">
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {%for category in links %}
                   <li><a class="dropdown-item" href="{% url 'product_name' category_slug=category.slug %}">{{category.category_name}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white p-3" href="{% url 'about' %}">About</a>
+                <a class="nav-link text-white p-2" href="{% url 'about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white p-3" href="{% url 'contact' %}">Contact</a>
-              </li>
+                <a class="nav-link text-white p-2" href="{% url 'contact' %}">Contact</a>
+              </li> 
               {% if user.is_authenticated  %}
               <li class="nav-item ">
-                <a class="nav-link  m-2 text-warning"  href="{% url 'myprofile' %}">My profile</a>
+                <a class="nav-link  text-warning"  href="{% url 'myprofile' %}">My profile</a>
               </li>
               <li class="nav-item ">
-                <p class="text-white p-3">hi, {{user.username}}</p>
+                <p class="text-white p-2">hi, {{user.username}}</p>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white m-2 border border-1"  href="{% url 'logout' %}">logout</a>
+                <a class="nav-link text-white "  href="{% url 'logout' %}">logout</a>
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link text-white p-3" href="{% url 'login' %}">Login</a>
+                <a class="nav-link text-white p-2" href="{% url 'login' %}">Login</a>
               </li>
               {% endif %}
             </ul>
             <ul class="navbar-nav ">
-              <li class="nav-item ms-end">
-                <a href="{% url 'cart' %}" class="btn btn-sm text-white btn-warning  px-4">Cart</a>   
+              <li class="nav-item ms-end ">
+                <a href="{% url 'cart' %}" class="btn btn-sm text-white btn-warning">Cart</a>   
               </li>
             </ul>
           </div>
@@ -106,7 +106,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4"> <!-- Added responsive row-cols -->
           {% for course in purchased_courses %}
           <div class="col"> <!-- Use col for responsive column -->
-            <div class="card mx-1 shadow" style="height: 420px;">
+            <div class="card mx-1 shadow" style="height: auto;">
               <img src="{{course.course_img.url}}" class="card-img-top" alt="" width="100" height="180"/>
               <div class="card-body">
                 <h6 class="card-title ">{{course.course_name}}</h6>
@@ -391,7 +391,7 @@
     
     
             <!-- Grid column -->
-            <div class="col-md-4  mx-auto mb-md-0 mb-4 text-start">
+            <div class="col-md-4  mx-auto mb-md-0 mb-4 ">
               <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Contact Info</h6>
               <span class="fw-bold">Address</span>
