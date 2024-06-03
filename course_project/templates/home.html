@@ -77,7 +77,7 @@
      
     <!-- navbar -->
  
-    <div class="m-5">
+    <div class=" container my-5">
        <div class="row justify-content-md-center">
          <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-start text-white">
          <p class="mt-5"><a href="" style="font-size: small; color: white; text-decoration: none;">ON-DEMAND VIDEO TRAINING</a></p>
@@ -144,206 +144,170 @@
 
      <!-- technologies learn -->
 
-     <!-- Course categories -->
-     <div class="container">
-      <h5 class="text-center my-4">Course Categories</h5>
-      <div class="row row-cols-1 row-cols-md-2 m-2">
-        {% for category in categories %}
-        <div class="col mb-3"> <!-- Add margin-bottom for spacing -->
-          <div class="card shadow h-100" > <!-- Fixed card height -->
-            {% if category.category_img %}
+<!-- Course categories -->
+<div class="container">
+  <h5 class="text-center my-4">Course Categories</h5>
+  <div class="row row-cols-1 row-cols-md-2 g-4"> <!-- Added gutter for consistent spacing -->
+      {% for category in categories %}
+      <div class="col"> <!-- Removed redundant margin-bottom -->
+          <div class="card shadow h-100 d-flex flex-column"> <!-- Flex column for proper alignment -->
+              {% if category.category_img %}
               <img src="{{ category.category_img.url }}" 
-                   class="card-img-top" 
-                   alt="{{ category.category_name }}" 
-                   style="height: 150px; object-fit: cover;" /> <!-- Image height -->
-            {% else %}
+                   class="card-img-top h-50" 
+                   alt="{{ category.category_name }}" > <!-- Consistent image height -->
+              {% else %}
               <img src="{% static 'images/default.jpg' %}" 
-                   class="card-img-top" 
-                   alt="Default Image" 
-                   style="height: 150px; object-fit: cover;" />
-            {% endif %}
-            <div class="card-body d-flex flex-column justify-content-between"> <!-- Flexbox for vertical alignment -->
-              <div>
-                <h6 class="card-title">{{ category.category_name }}</h6>
-                <p>{{ category.desc }}</p> <!-- Ensure the description doesn't overflow -->
+                   class="card-img-top h-50" 
+                   alt="Default Image"> <!-- Consistent image height -->
+              {% endif %}
+              <div class="card-body d-flex flex-column justify-content-between"> <!-- Flexbox for vertical alignment -->
+                  <div>
+                      <h4 class="card-title">{{ category.category_name }}</h4>
+                      <p>{{ category.desc }}</p> <!-- Ensure the description doesn't overflow -->
+                  </div>
+                  <a href="{% url 'product_name' category_slug=category.slug %}" class="btn btn-primary mt-auto w-100">Enroll in {{ category.category_name }}</a> <!-- Button at bottom -->
               </div>
-              <a href="{% url 'product_name' category_slug=category.slug %}" class="btn btn-primary btn-sm mt-auto w-75">Enroll in {{ category.category_name }}</a> <!-- Button at bottom -->
-            </div>
           </div>
-        </div>
-        {% endfor %}
       </div>
-    </div>
-    
-  
-     <!-- Course categories -->
+      {% endfor %}
+  </div>
+</div>
+<!-- Course categories -->
 
-     <!-- Courses -->
+<!-- Experience, Education, Certificate -->
+<div class="container-fluid mt-5 pt-5">
+  <div class="row mx-5 g-4">
+      <div class="col-md text-dark py-3 shadow-sm">
+          <h5>Experience</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus.</p>
+      </div>
+      <div class="col-md text-dark py-3 shadow-sm">
+          <h5>Education</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus.</p>
+      </div>
+      <div class="col-md text-dark py-3 shadow-sm">
+          <h5>Certificate</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus.</p>
+      </div>
+      <div class="col-md border-0 bg-light p-3 shadow-sm text-center text-md-start">
+          <p class="mb-2">Study at Your Own Pace</p>
+          <h6 class="mb-4">Boost Your Career by Learning Skills in High Demand</h6>
+          <a href="#" class="text-decoration-none fw-bold text-dark">GET STARTED</a>
+      </div>
+  </div>
+</div>
+<!-- Experience, Education, Certificate -->
 
-     
-     <!-- Courses -->
 
-     <!-- experience,education,certificate -->
 
-     <div class="mt-5 pt-5 ">
-       <div class="row mx-5 ">
-           <div class="col-md text-dark py-3 shadow-sm">
-             <h5>Experience</h5>
-             <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
-              luctus nec ullam corper mattis, pulvinar dapibus.</p>
-           </div>
-           <div class="col-md text-dark py-3 shadow"><h5>Education</h5>
-            <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
-             luctus nec ullam corper mattis, pulvinar dapibus.</p></div>
-           <div class="col-md text-dark py-3 shadow-sm">
-            <h5>Certificate</h5>
-             <p> Lorem ipsum dolor sit amet, consec tetur adipis cing elit. Ut elit tellus, 
-              luctus nec ullam corper mattis, pulvinar dapibus.</p>
-           </div>
-           <div class="col-md border-0 bg-light mx-4 mb-0 p-3 shadow">
-            <p>Study at Your Own Pace</p>
-            <h6 class="mb-4">Boost Your Career by Learning Skills in High Demand</h6>
-            <a href="#" class="text-decoration-none fw-bold  text-dark ">GET STARTED</a>
-           </div>
-       </div>
-     </div>
-
-     <!-- experience,education,certificate -->
-
-     <!-- features of course -->
-     <div class="m-5">
-       <div class="row ">
-        <div class="col-lg-6 text-start mt-5">
-          
+<!-- Features of Course -->
+<div class="container">
+  <div class="row">
+      <div class="col-lg-6 text-start mt-5">
           <p class="fw-bold">Features of Our Courses</p>
-          <h4 class=" fw-medium mb-4">Why Choose Us?</h4>
-          <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-        </div>
-        <div class="col-lg-6 mt-5">
-         <div class="row mb-2">
-           <div class="col-1">
-            <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
-           </div>
-           <div class="col-10 ms-2">
-             <h6 class="fw-bold">Best Industry Leaders</h6>
-             <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-             Ut elit tellus, luctus nec ullamcorper.</p>
-           </div>
-         </div>
-          
-         <div class="row mb-2">
-          <div class="col-1">
-           <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
+          <h4 class="fw-medium mb-4">Why Choose Us?</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="col-lg-6 mt-5">
+          <div class="row mb-2 align-items-center">
+              <div class="col-1">
+                  <img src="{% static 'images/ebook.png' %}" alt="" width="30px" height="30px">
+              </div>
+              <div class="col-10 ms-2">
+                  <h6 class="fw-bold">Best Industry Leaders</h6>
+                  <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+              </div>
           </div>
-          <div class="col-10 ms-2">
-            <h6 class="fw-bold">Learn Online at Your Own Pace</h6>
-            <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Ut elit tellus, luctus nec ullamcorper.</p>
+          <div class="row mb-2 align-items-center">
+              <div class="col-1">
+                  <img src="{% static 'images/ebook.png' %}" alt="" width="30px" height="30px">
+              </div>
+              <div class="col-10 ms-2">
+                  <h6 class="fw-bold">Learn Online at Your Own Pace</h6>
+                  <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+              </div>
           </div>
-        </div>
-
-        <div class="row mb-2">
-          <div class="col-1">
-           <img src="{% static 'images/ebook.png'%}" alt="" width="30px" height="30px">
+          <div class="row mb-2 align-items-center">
+              <div class="col-1">
+                  <img src="{% static 'images/ebook.png' %}" alt="" width="30px" height="30px">
+              </div>
+              <div class="col-10 ms-2">
+                  <h6 class="fw-bold">Professional Certification</h6>
+                  <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.</p>
+              </div>
           </div>
-          <div class="col-10 ms-2">
-            <h6 class="fw-bold">Professional Certification</h6>
-            <p class="mb-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Ut elit tellus, luctus nec ullamcorper.</p>
-          </div>
-        </div>
-       </div>
+      </div>
+  </div>
+</div>
+<!-- Features of Course -->
 
-       </div>   
-     </div>
-     <!-- features of course -->
-      
-     <!-- testmonials -->
-
-    <div class="m-5">
-
-      <div class="container mt-5">
-        <div class="row">
+<!-- Testimonials -->
+<div class="m-5">
+  <div class="container mt-5">
+      <div class="row">
           <!-- Feature Title -->
           <div class="col-12">
-            <p class="fw-bold">Features of Our Courses</p>
+              <p class="fw-bold">Features of Our Courses</p>
           </div>
-      
           <!-- Left Column (Title) -->
           <div class="col-md-7">
-            <h4 class="fw-medium">Trusted by Thousands of Students and Tutors</h4>
+              <h4 class="fw-medium">Trusted by Thousands of Students and Tutors</h4>
           </div>
-      
           <!-- Right Column (Button) -->
           <div class="col-md-5 text-md-end text-center">
-            <!-- Aligning to the end on larger screens and centered on smaller screens -->
-            <a href="{% url 'allcourse'%}" class="btn btn-warning rounded-2 px-4 py-1  fw-semibold btn-sm text-white">START LEARNING</a>
+              <a href="{% url 'allcourse' %}" class="btn btn-warning rounded-2 px-4 py-1 fw-semibold btn-sm text-white">START LEARNING</a>
           </div>
-        </div>
       </div>
-      
-
-        <div class="row row-cols-1 row-cols-md-2 g-4 my-5">
+      <div class="row row-cols-1 row-cols-md-2 g-4 my-5">
           <div class="col mt-5">
-            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
-              <div  class="position-absolute top-0 start-0 translate-middle-y">
-                <img src="{% static 'images/face-01.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              <div class="card position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+                  <div class="position-absolute top-0 start-0 translate-middle-y">
+                      <img src="{% static 'images/face-01.jpg' %}" alt="..." class="rounded-4 ms-5 shadow">
+                  </div>
+                  <div class="card-body mt-5">
+                      <p class="card-text">“Massa amet, at dolor tellus pellentesque aenean in eget massa tincidunt habitasse volutpat adipiscing sed id sit auctor eu vivamus nulla.”</p>
+                      <p class="fw-bold">Emma Hart</p>
+                  </div>
               </div>
-              <div class="card-body mt-5">
-                <p class="card-text ">“Massa amet, at dolor tellus pellentesque aenean in eget massa tincidunt habitasse volutpat 
-                  adipiscing sed id sit auctor eu vivamus nulla.”</p>
-                <p class="fw-bold">Emma Hart</p>
-              </div>
-            </div>
           </div>
-
           <div class="col mt-5">
-            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
-              <div  class="position-absolute top-0 start-0 translate-middle-y">
-                <img src="{% static 'images/face-02.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              <div class="card position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+                  <div class="position-absolute top-0 start-0 translate-middle-y">
+                      <img src="{% static 'images/face-02.jpg' %}" alt="..." class="rounded-4 ms-5 shadow">
+                  </div>
+                  <div class="card-body mt-5">
+                      <p class="card-text">“Donec in varius facilisis justo, curabitur aliquet sit justo sed sit interdum diam dolor ornare quis a felis adipiscing hendrerit quisque enim.”</p>
+                      <p class="fw-bold">Eddie Johnson</p>
+                  </div>
               </div>
-              
-              <div class="card-body mt-5">
-                <p class="card-text">“Donec in varius facilisis justo, curabitur aliquet sit justo sed sit 
-                  interdum diam dolor ornare quis a felis adipiscing hendrerit quisque enim.”</p>
-                <p class="fw-bold">Eddie Johnson</p>
-              </div>
-            </div>
           </div>
-
           <div class="col mt-5">
-            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
-              <div  class="position-absolute top-0 start-0 translate-middle-y">
-                <img src="{% static 'images/face-03.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              <div class="card position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+                  <div class="position-absolute top-0 start-0 translate-middle-y">
+                      <img src="{% static 'images/face-03.jpg' %}" alt="..." class="rounded-4 ms-5 shadow">
+                  </div>
+                  <div class="card-body mt-5">
+                      <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, a, pulvinar gravida enim in blandit mauris vitae volutpat urna, sed justo hendrerit.”</p>
+                      <p class="fw-bold">Mike Edward</p>
+                  </div>
               </div>
-              <div class="card-body mt-5">
-                <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, 
-                  a, pulvinar gravida enim in blandit
-                   mauris vitae volutpat urna, sed justo hendrerit.”</p>
-                <p class="fw-bold">MIKE EDWARD</p>
-              </div>
-            </div>
           </div>
-
           <div class="col mt-5">
-            <div class="card  position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
-              <div  class="position-absolute top-0 start-0 translate-middle-y">
-                <img src="{% static 'images/face-04.jpg'%}"  alt="..." class="rounded-4 ms-5 shadow">
+              <div class="card position-relative shadow-lg p-3 mb-5 bg-body rounded-4">
+                  <div class="position-absolute top-0 start-0 translate-middle-y">
+                      <img src="{% static 'images/face-04.jpg' %}" alt="..." class="rounded-4 ms-5 shadow">
+                  </div>
+                  <div class="card-body mt-5">
+                      <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, a, pulvinar gravida enim in blandit mauris vitae volutpat urna, sed justo hendrerit.”</p>
+                      <p class="fw-bold">Mike Edward</p>
+                  </div>
               </div>
-              <div class="card-body mt-5">
-                <p class="card-text">“Pulvinar dui vitae enim, diam et nulla elit nam leo lacinia et, a,
-                  pulvinar gravida enim in blandit mauris vitae volutpat urna, sed justo hendrerit.”</p>
-                <p class="fw-bold">MIKE EDWARD</p>
-              </div>
-            </div>
           </div>
+      </div>
+  </div>
+</div>
+<!-- Testimonials -->
 
-        </div>
-    </div>
-
-     <!-- testmonials -->
 
      <!-- subscribe -->
 <div class="my-5 text-center">
